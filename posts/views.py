@@ -4,18 +4,18 @@ from django.http import HttpRequest,HttpResponse
 # Create your views here.
 posts = [
     {
-    'id':1,
+    'id':0,
     'title':'Hello wrold',
     "discription":"hey this world's most beautiful country is switzerlend"
 },
 {
-    'id':2,
+    'id':1,
     'title':"Prophet Muhammed (s.a)",
     'discription':'''muhammed (s.a) he is the last phrophet in our world,
     The most Hand some and good guy in the world is prophet muhammed (s.a)'''
 },
 {
-    'id':3,
+    'id':2,
     'title':" jebreel (a.s)",
     'discription':"jebreel (a.s) he is the messenger of allah, and he is the leader of all malaikath"
 },
@@ -23,16 +23,26 @@ posts = [
 ]
 
     
-
-
-def helloworld(request):
+def home(request):
     html = "" 
     for post in posts:
         html += f''' 
             <div> 
-                <h1> {post['id']} - {post['title']} </h1>
+            <a href = "/post/{post['id']}/"
+                <h1> {post['id']} - {post['title']} </h1> </a>
                 <p> {post['discription']} </p>            
             </div>
     
 '''
+    return HttpResponse(html)
+
+def post(request, id):
+    for post in posts:
+        if post['id'] == id:
+            post_dict = post
+            break
+    html = f'''
+        <h1> {post_dict['title']}</h1>
+        <p> {post_dict['discription']}</p>
+ '''
     return HttpResponse(html)
