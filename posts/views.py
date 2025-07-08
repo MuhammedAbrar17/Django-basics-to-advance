@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpRequest,HttpResponse
+from django.http import HttpRequest,HttpResponse,HttpResponseNotFound,HttpResponseRedirect
 
 # Create your views here.
 posts = [
@@ -37,12 +37,22 @@ def home(request):
     return HttpResponse(html)
 
 def post(request, id):
+    valid_id = False
     for post in posts:
         if post['id'] == id:
             post_dict = post
-            break
-    html = f'''
-        <h1> {post_dict['title']}</h1>
-        <p> {post_dict['discription']}</p>
- '''
-    return HttpResponse(html)
+            valid_id = True
+    if valid_id:
+
+        html = f'''
+            <h1> {post_dict['title']}</h1>
+            <p> {post_dict['discription']}</p>
+    '''
+        return HttpResponse(html)
+    
+    else:
+        return HttpResponseNotFound("Post Not avalibale")
+    
+
+def google(request):
+    return HttpResponseRedirect('https://www.google.com')
