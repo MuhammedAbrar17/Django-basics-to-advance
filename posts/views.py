@@ -34,7 +34,7 @@ def home(request):
             </div>
     
 '''
-    return HttpResponse(html)
+    return render(request,"home.html")
 
 def post(request, id):
     valid_id = False
