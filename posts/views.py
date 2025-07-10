@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest,HttpResponse,HttpResponseNotFound,HttpResponseRedirect
 
 # Create your views here.
-posts = [
+Posts = [
     {
     'id':0,
     'title':'Hello wrold',
@@ -25,7 +25,7 @@ posts = [
     
 def home(request):
     html = "" 
-    for post in posts:
+    for post in Posts:
         html += f''' 
             <div> 
             <a href = "/post/{post['id']}/"
@@ -33,12 +33,12 @@ def home(request):
                 <p> {post['discription']} </p>            
             </div>
     
-'''
-    return render(request,"home.html")
+''' 
+    return render(request,"home.html",{"posts":Posts})
 
 def post(request, id):
     valid_id = False
-    for post in posts:
+    for post in Posts:
         if post['id'] == id:
             post_dict = post
             valid_id = True

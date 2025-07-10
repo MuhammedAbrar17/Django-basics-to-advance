@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Hello this is home page</h1>
+    {% for post in posts%}
+    <h1>{{post.title}}</h1>
+    <h1>{{post.discription}}</h1>
+    {% endfor %}
 </body>
-</html>l
+</html>
