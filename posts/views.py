@@ -22,6 +22,7 @@ Posts = [
 
 ]
 
+
     
 def home(request):
     html = "" 
@@ -34,7 +35,7 @@ def home(request):
             </div>
     
 ''' 
-    return render(request,"home.html",{"posts":Posts})
+    return render(request,"home.html",{"posts":Posts,'username':'abu'})
 
 def post(request, id):
     valid_id = False

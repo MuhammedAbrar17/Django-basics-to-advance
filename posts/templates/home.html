@@ -6,9 +6,16 @@
     <title>Document</title>
 </head>
 <body>
+    {{username|capfirst}} <!this is django template filter tag!>
+    {% if posts %}
     {% for post in posts%}
     <h1>{{post.title}}</h1>
     <h1>{{post.discription}}</h1>
     {% endfor %}
+    {% else %}
+
+    <h1>Post is empty</h1>
+
+    {% endif%}
 </body>
 </html>
