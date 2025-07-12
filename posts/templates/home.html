@@ -9,8 +9,8 @@
     {{username|capfirst}} <!this is django template filter tag!>
     {% if posts %}
     {% for post in posts%}
-    <h1>{{post.title}}</h1>
-    <h1>{{post.discription}}</h1>
+    <h1>{{post.title|title}}</h1>
+    <h1>{{post.discription|truncatewords:10}}</h1>
     {% endfor %}
     {% else %}
 
